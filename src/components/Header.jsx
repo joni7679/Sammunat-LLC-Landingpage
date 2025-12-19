@@ -2,8 +2,15 @@
 import { Menu, X } from "lucide-react"
 import { useState } from "react"
 import logo from '../assets/logo-comp.png'
+import { CiMenuFries } from "react-icons/ci";
+import { RxCross1 } from "react-icons/rx";
+
 const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+    const toggleMuenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen)
+    }
 
     const navLinks = [
         { label: "Home", },
@@ -23,7 +30,7 @@ const Header = () => {
                             <img src={logo} alt="" />
                         </div>
                     </div>
-                    <nav className="hidden md:flex items-center gap-8">
+                    <nav className={`navbar md:flex items-center gap-8 ${mobileMenuOpen ? "activenavbar" : ""}`}>
                         {navLinks.map(link => (
                             <a
                                 key={link.label}
@@ -35,42 +42,18 @@ const Header = () => {
                         ))}
                     </nav>
 
-                    <div className="hidden md:block">
+                    <div className="flex items-center gap-1.5">
                         <button size="sm" className="px-6 py-3 rounded-lg bg-blue-500 text-white cursor-pointer">Get Started</button>
-                    </div>
 
-                    <button
-                        className="md:hidden p-2"
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        {mobileMenuOpen ? (
-                            <X className="w-5 h-5" />
-                        ) : (
-                            <Menu className="w-5 h-5" />
-                        )}
-                    </button>
+                        <button onClick={toggleMuenu} className="px-6 py-3 rounded-lg cursor-pointer">
+                            {
+                                !mobileMenuOpen ? <CiMenuFries className="text-2xl inline-block menu-toggle" /> : <RxCross1 />
+                            }
+                        </button>
+                    </div>
                 </div>
 
-                {mobileMenuOpen && (
-                    <div className="md:hidden py-4 border-t border-border">
-                        <nav className="flex flex-col gap-4">
-                            {navLinks.map(link => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    {link.label}
-                                </a>
-                            ))}
-                            <button className="px-6 py-3 rounded-lg bg-blue-500 text-white cursor-pointer">
-                                Get Started
-                            </button>
-                        </nav>
-                    </div>
-                )}
+
             </div>
         </header>
     )

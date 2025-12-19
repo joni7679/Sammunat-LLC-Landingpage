@@ -9,6 +9,7 @@ gsap.registerPlugin(SplitText);
 const Hero = () => {
     const headingRef = useRef(null);
     const subHeadingRef = useRef(null);
+    const heroImgRef = useRef(null)
 
     useEffect(() => {
         SplitText.create(headingRef.current, {
@@ -41,6 +42,12 @@ const Hero = () => {
                 });
             },
         });
+
+        gsap.from(heroImgRef.current, {
+            y: 100,
+            opacity: 0,
+            duration: 0.5,
+        })
     }, []);
 
     return (
@@ -75,10 +82,8 @@ const Hero = () => {
                             No credit card required for consultation
                         </p>
                     </div>
-
-                    {/* RIGHT IMAGE */}
                     <div className="relative">
-                        <img
+                        <img 
                             src={heroImg}
                             alt="Global IT Services"
                             className="w-full rounded-2xl shadow-2xl"

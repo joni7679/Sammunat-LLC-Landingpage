@@ -57,18 +57,8 @@ const WhyChoose = () => {
                     </div>
 
                     <div className="relative">
-                        <div className="bg-card rounded-xl border border-border shadow-elevated overflow-hidden">
-                            <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-muted">
-                                <div className="w-3 h-3 rounded-full bg-destructive/60" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                                <div className="w-3 h-3 rounded-full bg-success" />
-                            </div>
-                            <div className="p-6 bg-foreground/5 min-h-[200px] flex items-center justify-center">
-                                <div className="text-center text-muted-foreground">
-                                    <p className="font-mono text-sm">// Your code here</p>
-                                    <p className="mt-2 text-xs">Enterprise-grade solutions</p>
-                                </div>
-                            </div>
+                        <div className="bg-card h-[30rem] rounded-xl border border-border shadow-elevated overflow-hidden">
+                          <img src="https://sammunat.com/assets/images/hero-slide-1.jpg"/>
                         </div>
                     </div>
                 </div>
