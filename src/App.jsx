@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -8,6 +8,8 @@ import Footer from './components/Footer'
 import Lenis from 'lenis'
 import { ScrollTrigger } from 'gsap/all'
 import gsap from 'gsap'
+import Loader from './components/Loader'
+import Contact from './components/Contact'
 
 const App = () => {
   const lenis = new Lenis();
@@ -26,12 +28,15 @@ const App = () => {
   return (
     <>
       <main className='overflow-hidden'>
-        <Header />
-        <Hero />
-        <Services />
-        <WhyChoose />
-        <HowItWorks />
-        <Footer />
+        <Suspense fallback={<Loader />}>
+          <Header />
+          <Hero />
+          <Services />
+          <WhyChoose />
+          <HowItWorks />
+          <Contact/>
+          <Footer />
+        </Suspense>
       </main>
     </>
   )

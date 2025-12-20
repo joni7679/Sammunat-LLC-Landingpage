@@ -1,3 +1,7 @@
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+import splitTextAnimation from "../animation/splitTextAnimation";
+
 const steps = [
     {
         number: 1,
@@ -20,14 +24,20 @@ const steps = [
 ]
 
 const HowItWorks = () => {
+    const sectionRef = useRef(null);
+    const headingRef = useRef(null)
+    useGSAP(() => {
+        splitTextAnimation(headingRef.current, sectionRef.current)
+    }, [])
+
     return (
-        <section id="how-it-works" className="py-20 bg-card">
+        <section ref={sectionRef} id="how-it-works" className="py-20 bg-card">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
-                    <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-full mb-4">
+                    <h2 ref={headingRef} className=" px-4 py-2 text-xl font-semibold rounded-full mb-4">
                         OUR PROCESS
-                    </span>
-                    <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                    </h2>
+                    <h2  className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                         How It Works
                     </h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -40,7 +50,7 @@ const HowItWorks = () => {
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {steps.map((step, index) => (
-                            <div key={step.number} className="relative text-center">
+                            <div key={step.number} className="relative text-center bg-white shadow-md p-5 rounded-2xl">
                                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg mb-4 relative z-10">
                                     {step.number}
                                 </div>

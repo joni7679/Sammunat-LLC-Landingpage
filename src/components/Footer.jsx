@@ -1,25 +1,6 @@
 import { Linkedin, Twitter, Github } from "lucide-react"
 import logo from '../assets/logo-comp.png'
-const footerLinks = {
-    company: [
-        { label: "About Us", href: "#" },
-        { label: "Careers", href: "#" },
-        { label: "Blog", href: "#" },
-        { label: "Contact", href: "#" }
-    ],
-    resources: [
-        { label: "Documentation", href: "#" },
-        { label: "Help Center", href: "#" },
-        { label: "Community", href: "#" },
-        { label: "Case Studies", href: "#" }
-    ],
-    legal: [
-        { label: "Privacy Policy", href: "#" },
-        { label: "Terms of Service", href: "#" },
-        { label: "Cookie Policy", href: "#" }
-    ]
-}
-
+import { footerLinks } from "../data/footerdata"
 const Footer = () => {
     return (
         <footer className="bg-[#344155] py-12">

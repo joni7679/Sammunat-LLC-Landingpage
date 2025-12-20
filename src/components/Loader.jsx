@@ -1,19 +1,29 @@
-import React from 'react'
+import { motion } from "motion/react"
 
-const Loader = () => {
-  return (
-    <>
-    <div id="loader">
-  <div class="dot" data-depth="0.20"><span>L</span></div>
-  <div class="dot" data-depth="0.20"><span>O</span></div>
-  <div class="dot" data-depth="0.20"><span>A</span></div>
-  <div class="dot" data-depth="0.20"><span>D</span></div>
-  <div class="dot" data-depth="0.20"><span>I</span></div>
-  <div class="dot" data-depth="0.20"><span>N</span></div>
-  <div class="dot" data-depth="0.20"><span>G</span></div>
-</div>
-    </>
-  )
+function Loader() {
+    const dotVariants = {
+        pulse: {
+            scale: [1, 1.5, 1],
+            transition: {
+                duration: 1.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+            },
+        },
+    }
+
+    return (
+        <motion.div
+            animate="pulse"
+            transition={{ staggerChildren: -0.2, staggerDirection: -1 }}
+            className="container"
+        >
+            <motion.div className="dot" variants={dotVariants} />
+            <motion.div className="dot" variants={dotVariants} />
+            <motion.div className="dot" variants={dotVariants} />
+            <StyleSheet />
+        </motion.div>
+    )
 }
 
 export default Loader

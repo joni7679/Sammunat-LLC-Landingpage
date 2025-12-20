@@ -9,7 +9,9 @@ gsap.registerPlugin(SplitText);
 const Hero = () => {
     const headingRef = useRef(null);
     const subHeadingRef = useRef(null);
-    const heroImgRef = useRef(null)
+    const heroImgRef = useRef(null);
+    const buttonRef = useRef(null);
+
 
     useEffect(() => {
         SplitText.create(headingRef.current, {
@@ -41,8 +43,8 @@ const Hero = () => {
                     ease: "power3.out",
                 });
             },
-        });
 
+        });
         gsap.from(heroImgRef.current, {
             y: 100,
             opacity: 0,
@@ -69,7 +71,7 @@ const Hero = () => {
                             We’re a creative company that focuses on establishing long-term partnership with customers.
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <button className="px-6 py-3 rounded-lg bg-blue-500 text-white cursor-pointer">
+                            <button ref={buttonRef} className="px-6 py-3 rounded-lg bg-blue-500 text-white cursor-pointer">
                                 Start Your Project
                             </button>
                             <button className="px-6 py-3 rounded-lg border cursor-pointer">
@@ -83,13 +85,12 @@ const Hero = () => {
                         </p>
                     </div>
                     <div className="relative">
-                        <img 
+                        <img
                             src={heroImg}
                             alt="Global IT Services"
                             className="w-full rounded-2xl shadow-2xl"
                         />
                     </div>
-
                 </div>
             </div>
         </section>
